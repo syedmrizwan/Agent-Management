@@ -10,11 +10,11 @@ async def start_agent():
     cluster_id = "test-cluster"
     client_id = "agent1"
     channel_subject = "agent.1AX24"
-    nc = NATS()
-    await nc.connect("nats://127.0.0.1:4222")
+    nats_connection = NATS()
+    await nats_connection.connect("nats://127.0.0.1:4222")
 
     sc = STAN()
-    await sc.connect(cluster_id, client_id, nats=nc)
+    await sc.connect(cluster_id, client_id, nats=nats_connection)
 
     def cb(msg):
         req_data = json.loads(msg.data.decode())
