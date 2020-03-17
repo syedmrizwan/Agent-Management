@@ -1,4 +1,7 @@
+![](https://raw.githubusercontent.com/nats-io/nats-site/master/src/img/large-logo.png)
+
 # Agent-Management
+NATS is a simple, secure and high performance open source messaging system for cloud native applications, IoT messaging, and micro-services architectures.Whereas NATS Streaming is a data streaming system powered by NATS, and written in the Go programming language.For more detail chekout this [link](https://medium.com/@syedrizwan161/high-performance-messaging-with-nats-1c261fae3778)
 
 ## Run NATS streaming server using the following command. 
 
