@@ -16,7 +16,8 @@ async def start_agent():
     sc = STAN()
     await sc.connect(cluster_id, client_id, nats=nats_connection)
 
-    def cb(msg):
+    async def cb(msg):
+        await sc.ack(msg)
         req_data = json.loads(msg.data.decode())
         global agent_running
         if req_data['event_type'] == 'start' and not agent_running:
@@ -29,7 +30,7 @@ async def start_agent():
             print("Agent stopped")
             # STOP AGENT CODE
 
-    await sc.subscribe(channel_subject, start_at="last_received", cb=cb)
+    await sc.subscribe(channel_subject, manual_acks=True, start_at="last_received", cb=cb)
 
 
 if __name__ == '__main__':
